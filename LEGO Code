@@ -1,0 +1,91 @@
+#include <kipr/wombat.h>
+
+int main()
+{
+    enable_servos();
+    int right = 3;
+    int left = 1;
+    
+    set_servo_position(0,210);
+    msleep(500);
+    //Drive forward
+    mav(left,800);
+    mav(right,800);
+    msleep(5200);
+    ao();
+    set_servo_position(0,1200);
+    //Turn left
+    mav(left,-500);
+    mav(right,500);
+    msleep(2100);
+    ao();
+    //Go backwards (under ramp)
+    mav(left,-800);
+    mav(right,-800);
+    msleep(3000);
+    ao();
+    //Turn right (towards blue and white pvc)
+    mav(left,500);
+    mav(right,-500);
+    msleep(1000);
+    ao();
+    
+    //Drive backward towards blue and white pvc
+    mav(left,-800);
+    mav(right,-800);
+    msleep(1500);
+    ao();
+    //Arc to the right
+    mav(left,800);
+    msleep(1000);
+    ao();
+    //Drive backward to push blue and white pvc
+    mav(left,-800);
+    mav(right,-800);
+    msleep(3800);
+    ao();
+    //Turn to the right with pvc
+    //mav(left,-500);
+    mav(right,-500);
+    msleep(3700);
+    ao();
+    //Drive towards starting box
+    mav(left,-800);
+    mav(right,-800);
+    msleep(2000);
+    ao();
+    //Turn "right"
+    mav(left,500);
+    mav(right,-500);
+    msleep(500);
+    ao();
+    //Drive into starting box
+    mav(left,-800);
+    mav(right,-800);
+    msleep(2000);
+    ao();
+    //Turn "right"
+    mav(left,500);
+    mav(right,-500);
+    msleep(1800);
+    ao();
+    //Drive "forward"
+    mav(left,-800);
+    mav(right,-800);
+    msleep(7500);
+    ao();
+    //Drive "backward"
+    mav(left,800);
+    mav(right,800);
+    msleep(5000);
+    ao();
+    /*
+    //Turn 180 degrees towards ramp
+    mav(left,500);
+    mav(right,-500);
+    msleep(4000);
+    ao();
+    */
+    disable_servos();
+    return 0;
+}
